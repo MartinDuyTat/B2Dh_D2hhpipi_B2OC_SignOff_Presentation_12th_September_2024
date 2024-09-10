@@ -1,0 +1,13 @@
+#!/bin/bash
+f=B2Dh_D2hhpipi_B2OC_SignOff_Presentation_12th_September_2024
+if pdflatex $f.tex
+then
+  cd fgraph
+  MPFILES=`ls *.mp`
+  for MP in ${MPFILES}; do
+    mpost ${MP}
+  done
+  cd ..
+  pdflatex $f.tex
+fi
+rm $f.{aux,log,nav,out,snm,toc,vrb}
